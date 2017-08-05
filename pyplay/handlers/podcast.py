@@ -2,6 +2,8 @@ import json
 
 
 def info(ev, ctx):
+    import pprint
+    pprint.pprint(ev)
     headers = ev['headers']
     body = ev['body']
 
