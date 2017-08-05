@@ -6,6 +6,8 @@ pyplay
 An ASCII podcast player for the web. Nobody asked for it, but I could tell the
 world wanted it. Add RSS feeds and browse podcasts in a boring way.
 
+Its design is inspired by old terminals and jupyter notebooks.
+
 
 Description
 ===========
@@ -33,6 +35,7 @@ User Interface / Features
 
 - Text progress bar for audio
 - Persist play state for session to dynamo
+         (and subscriptions)
 
 - added feeds should be text that looks like a hyperlink with cover image next to it
   this should all be aligned in a grid somehow.

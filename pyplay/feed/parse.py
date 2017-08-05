@@ -11,7 +11,7 @@ class PodcastEntry(object):
         return self._raw['title']
 
     @property
-    def audioRef(self):
+    def audio_ref(self):
         links = self._raw['links']
         audio = [l for l in links
                  if 'audio' in l['type']]
@@ -61,7 +61,6 @@ class PodcastFeed(object):
     def entries(self):
         return [PodcastEntry(e)
                 for e in self._parsed_entries]
-
 
 def parse_feed(rss):
     return PodcastFeed(rss)
