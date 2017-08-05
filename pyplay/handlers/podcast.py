@@ -1,17 +1,18 @@
 import json
 
+from pyplay.feed.parse import PodcastJSONEncoder, PodcastFeed
+
 
 def info(ev, ctx):
-    import pprint
-    pprint.pprint(ev)
     headers = ev['headers']
-    body = ev['body']
+    body = json.loads(ev['body'])
 
     url = body['url']
 
     return {
-        'responseCode': 200,
-        'body': json.dumps({})
+        'statusCode': 200,
+        'body': json.dumps(PodcastFeed(url),
+                           cls=PodcastJSONEncoder)
     }
 
 

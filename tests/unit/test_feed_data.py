@@ -1,8 +1,10 @@
-from pyplay.feed.parse import parse_feed
+import json
+
+from pyplay.feed.parse import PodcastFeed, PodcastJSONEncoder
 
 
 def test_PodcastEntry(feed_data):
-    processed = parse_feed(feed_data)
+    processed = PodcastFeed(feed_data)
     entries = processed.entries
 
     assert processed.summary
@@ -18,3 +20,9 @@ def test_PodcastEntry(feed_data):
         assert e.audio_ref
         assert e.title
         assert e.id
+
+
+def test_PodcastJSONEncoder(feed_data):
+    feed = PodcastFeed(feed_data)
+    res = json.dumps(feed, cls=PodcastJSONEncoder)
+    assert res

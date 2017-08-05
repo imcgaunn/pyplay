@@ -1,5 +1,23 @@
 # functions for parsing RSS feed data
+import json
+
 import feedparser
+
+
+class PodcastJSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, PodcastEntry):
+            return {'title': o.title,
+                    'links': o.audio_ref,
+                    'summary': o.summary,
+                    'id': o.id}
+        elif isinstance(o, PodcastFeed):
+            return {'title': o.title,
+                    'artwork': o.artwork_uri,
+                    'entries': o.entries,
+                    'summary': o.summary,
+                    'date': o.updated,
+                    'publisher': o.pub_detail}
 
 
 class PodcastEntry(object):
@@ -62,5 +80,3 @@ class PodcastFeed(object):
         return [PodcastEntry(e)
                 for e in self._parsed_entries]
 
-def parse_feed(rss):
-    return PodcastFeed(rss)
