@@ -10,3 +10,9 @@
 from __future__ import print_function, absolute_import, division
 
 import pytest
+
+
+@pytest.fixture()
+def feed_data():
+    with open('data/example_feed.rss') as f:
+        return f.read()
