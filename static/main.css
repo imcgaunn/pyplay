@@ -1,0 +1,38 @@
+body {
+    background: black;
+}
+
+#app {
+    width: 768px;
+    height: 1024px;
+    margin: auto;
+    color: white;
+    font-size: 20px;
+}
+
+#feedinput input {
+    border: none;
+    background-color: transparent;
+    color: white;
+    width: 70%;
+    font-size: 20px;
+}
+
+#feedinput::before {
+    content: '~';
+    color: #7D26CD;
+}
+
+.title {
+    text-align: center;
+    color: white;
+}
+
+.podcastview {
+    height: 200px;
+    margin: auto;
+    overflow: auto;
+    color: white;
+    background: rgb(40, 44, 52);
+    margin: 15px;
+}
