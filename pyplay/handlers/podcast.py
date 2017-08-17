@@ -1,19 +1,18 @@
 import json
+from flask import Flask
+from flask import request, jsonify, make_response
 
 from pyplay.feed.parse import PodcastJSONEncoder, PodcastFeed
 
+app = Flask(__name__)
 
-def info(ev, ctx):
-    headers = ev['headers']
-    body = json.loads(ev['body'])
 
+@app.route("/info", methods=['POST'])
+def info():
+    body = request.json 
     url = body['url']
-
-    return {
-        'statusCode': 200,
-        'body': json.dumps(PodcastFeed(url),
-                           cls=PodcastJSONEncoder)
-    }
+    return make_response(json.dumps(PodcastFeed(url),
+                                    cls=PodcastJSONEncoder))
 
 
 # def init(sess_token, host=None):
